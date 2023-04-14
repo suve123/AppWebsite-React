@@ -1,23 +1,22 @@
 
 import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from './App';
+import { AuthContext } from '../AuthContext/AuthContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+import BillingButton from '../BillingButton/BillingButton';
 
+import {createCustomerPortalSession} from '../../api/services/createCustomerPortalSession';
 
 
   
 
 function Component() {
-
   
   const auth = useContext(AuthContext);
-  
 
-
- let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse/`)
+  let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse/`)
 
   return (
     <Box>
@@ -26,14 +25,22 @@ function Component() {
         <Box sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
           {/* Your main content goes here */}
           <Typography variant="h4" component="h1" gutterBottom>
-            V10d Smart Assistant - Setup & Configuration
+            V10d Smart Assistant - Order & Configuration
           </Typography>
+          
           {auth ? (
-
-              <Typography>
-
+            <>
+              <Typography gutterBottom>
+              Welcome to your account management portal. Here, you can easily manage your subscription and billing information. With just a click, you'll be able to change your plan, update payment details, or even cancel your subscription. Everything you need to take control of your account is at your fingertips. Simply click the "Manage Billing" button below to get started.
+              <br /><br />
+              </Typography>
+              <Typography gutterBottom>
+              Use the menu to navigate the site.
+              <br />
               </Typography>
 
+              
+            </>
               ) : (
                 <>
                   <Typography>

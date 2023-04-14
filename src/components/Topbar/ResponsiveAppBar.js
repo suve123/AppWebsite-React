@@ -1,6 +1,6 @@
 
 import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from './App';
+import { AuthContext } from '../AuthContext/AuthContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,7 +17,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 
 import { Link } from 'react-router-dom'; // Import NavLink instead of Link
 
-import logoImage from './assets/images/v10d-logo.png';
+import logoImage from '../../assets/images/v10d-logo.png';
 
 
 
@@ -125,24 +125,7 @@ function ResponsiveAppBar({ handleLogout }) {
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              LOGO
-            </Typography>
+           
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                 <Link key={page} to={`/${page.toLowerCase()}`} onClick={handleCloseNavMenu} style={{ textDecoration: 'none' }}> {/* Use NavLink instead of Link */}

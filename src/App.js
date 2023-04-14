@@ -2,52 +2,54 @@
 import React, { createContext, useState, useEffect  } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Home from './Home';
-import Product from './Product';
-import ResponsiveAppBar from './ResponsiveAppBar';
-
-import Subscription from './Subscription';
-import Help from './Help';
-import Setup from './Setup';
-import LoginError from './LoginError';
-import MeetingMinder from './MeetingMinder';
+import { AuthContext } from './components/AuthContext/AuthContext';
+import Home from './components/Home/Home';
+import Product from './components/Product/Product';
 import jwtDecode from 'jwt-decode';
 
+import ResponsiveAppBar from './components/Topbar/ResponsiveAppBar';
+import Subscription from './components/Subscription/Subscription';
+import Help from './components/Help/Help';
+import Setup from './components/Setup/Setup';
+import LoginError from './components/LoginError/LoginError';
+import MeetingMinder from './components/Meetingminder/MeetingMinder';
+import OrderSuccess from './components/Order/Success';
 
-export const AuthContext = createContext(null);
 
 
 function App() {
 
-
-
-    // Check if a JWT token is stored in sessionStorage
-    const storedJwtToken = sessionStorage.getItem('jwt');
+    // Check if a JWT token is stored in localStorage
+    const access_token = localStorage.getItem('access_token');
+    const refresh_token = localStorage.getItem('refresh_token');
     // or, use localStorage
     // const storedJwtToken = localStorage.getItem('jwt');
   
     // Initialize the auth state based on the presence of a JWT token
-    const [auth, setAuth] = useState(!!storedJwtToken);
+    const [auth, setAuth] = useState(!!access_token);
   
     useEffect(() => {
+      console.log("Render the App.js")
       const urlParams = new URLSearchParams(window.location.search);
-      const jwtToken = urlParams.get('jwt');
+      const myToken = JSON.parse(urlParams.get('tokens'));
   
-      if (jwtToken) {
-        sessionStorage.setItem('jwt', jwtToken);
-        // or, use localStorage
-        // localStorage.setItem('jwt', jwtToken);
+      if (myToken) {
+        console.log("We will register the stuffwe got? 123")
+        console.log(myToken);
+
+        localStorage.setItem('access_token', myToken.access_token);
+        localStorage.setItem('refresh_token', myToken.refresh_token);
+        localStorage.setItem('id_token', myToken.id_token);
   
         // Set the authentication state
         setAuth(true);
-        
-        console.log(jwtToken);
 
         // Setting Sub info
-        const decodedToken = jwtDecode(jwtToken);
-        sessionStorage.setItem('sub', decodedToken.sub);
-        sessionStorage.setItem('groups', decodedToken['cognito:groups']);
+        const decodedToken = jwtDecode(myToken.access_token);
+        localStorage.setItem('sub', decodedToken.sub);
+        localStorage.setItem('groups', decodedToken['cognito:groups']);
+        localStorage.setItem('email', myToken.email);
+
 
         console.log(decodedToken);
 
@@ -58,8 +60,8 @@ function App() {
     }, []);
 
     const handleLogout = () => {
-      // do the logout logic here, e.g. clear the token from sessionStorage
-      sessionStorage.removeItem('jwt');
+      // do the logout logic here, e.g. clear the token from localStorage
+      localStorage.removeItem('access_token');
       // set the auth state to false to redirect the user to the login page
       setAuth(false);
       console.log("Logging out the user. Unsetting Token. Now redirecting to Cognito Signout")
@@ -84,6 +86,8 @@ function App() {
           <Route path="/setup" element={<Setup />} />
           <Route path="/meetingminder" element={<MeetingMinder />} />
           <Route path="/help" element={<Help />} />
+
+          <Route path="/order/success" element={<OrderSuccess />} />
 
 
 

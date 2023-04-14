@@ -1,6 +1,6 @@
 
 import React, { useContext } from 'react';
-import { AuthContext } from './App';
+import { AuthContext } from '../AuthContext/AuthContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 function Component() {
 
   const auth = useContext(AuthContext);
+  console.log("Rendering Setup")
 
 
   return (
@@ -20,19 +21,17 @@ function Component() {
         <Box sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
           {/* Your main content goes here */}
           <Typography variant="h4" component="h1" gutterBottom>
-            Login FAILED :-(
+            Setup
           </Typography>
-          <Typography>
-          The login failed. Please try again.
-          </Typography>
-
           {auth ? (
 
               <Typography>
+              ...
               </Typography>
 
               ) : (
                 <Typography>
+                ...
               </Typography>
             )}
             
