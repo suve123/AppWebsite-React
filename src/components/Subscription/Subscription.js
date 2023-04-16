@@ -27,9 +27,13 @@ function Component() {
             Manage your subscription and payments
           </Typography>
           {auth ? (
-
+              <>
+                <Typography gutterBottom>
+                  At our company, we prioritize providing a seamless user experience, which includes convenient self-service options for managing your account. With our user-friendly Customer Portal, you can easily access and modify your account settings. This includes updating payment methods, managing subscriptions, reviewing billing history, retrieving invoices and receipts, and adjusting the products in your portfolio. This secure and efficient portal ensures that you have full control over your account, enabling you to make changes at any time, without the need to contact customer support.
+                
+                </Typography>
                 <BillingButton />
-
+              </>
               ) : (
                 <Typography>
                 Log in with youe V10d credentials to manage your subscription details:<br /><br />
