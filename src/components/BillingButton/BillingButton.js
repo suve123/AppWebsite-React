@@ -41,38 +41,6 @@ const BillingButton = () => {
     }
   };
 
-   
-
-
-  const handleButtonClick2 = async () => {
-    // https://api.v10d.com/auth/dsa/stripe/createCustomerPortalSession
-    // https://v10d-proxy1.ngrok.app/stripe/createCustomerPortalSession
-    try {
-      const storedJwtToken = localStorage.getItem('access_token');
-      const response = await fetch('https://api.v10d.com/auth/dsa/stripe/createCustomerPortalSession', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${storedJwtToken}`
-        }
-      });
-
-      const data = await response.json();
-
-      if (data.status === 'ok') {
-        if (data.urls.length > 1) {
-          // we have several URLs to choose from - we must render new links to the user
-          setBillingUrls(data.urls);
-        } else {
-          window.location.href = data.urls[0].url;
-        }
-      } else {
-        console.error('Failed to get the URL');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
 
   if (loading) {
     return (

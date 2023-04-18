@@ -18,6 +18,8 @@ function Component() {
 
   let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse/`)
 
+  console.log("Home Component loaded")
+  
   return (
     <Box>
       

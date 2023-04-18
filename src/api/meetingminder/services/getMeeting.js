@@ -1,11 +1,11 @@
 import customFetch from '../../customFetch';
 
-async function getAllMeetings() {
+async function getMeeting(arn) {
   
   
   
   const response = await customFetch(
-    `${process.env.REACT_APP_API_BASE_AUTH_DSA}/meetings`,
+    `${process.env.REACT_APP_API_BASE_AUTH_DSA}/meeting/${arn}`,
     {
       method: 'GET',
       headers: {
@@ -23,4 +23,4 @@ async function getAllMeetings() {
 
 // Add other service calls here
 
-export { getAllMeetings /*, otherServiceCalls, ... */ };
+export { getMeeting /*, otherServiceCalls, ... */ };

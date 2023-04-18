@@ -1,8 +1,20 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 
-const MeetingSummaryTable = ({ data }) => {
+const MeetingSummaryTable = ({ data, handleRowSelect }) => {
+  console.log(data)
+  if(!data?.output){
+    return (
+      <>
+      <Typography>There is no meetings on your account</Typography>
+      </>
+    )
+  }
   const { items } = data.output;
+
+  const onRowClick = (title) => {
+    handleRowSelect(title);
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -16,10 +28,14 @@ const MeetingSummaryTable = ({ data }) => {
         </TableHead>
         <TableBody>
           {items.map((item, index) => (
-            <TableRow key={index}>
+            <TableRow
+              key={index}
+              onClick={() => onRowClick(item.statemachineId)}
+              style={{ cursor: 'pointer' }}
+            >
               <TableCell>{item.status}</TableCell>
-              <TableCell>{item.summary.timestamp}</TableCell>
-              <TableCell>{item.summary.message.meeting_titles[0]}</TableCell>
+              <TableCell>{item.time}</TableCell>
+              <TableCell>{item.title}</TableCell>
             </TableRow>
           ))}
         </TableBody>

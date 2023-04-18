@@ -29,7 +29,7 @@ function App() {
     const [auth, setAuth] = useState(!!access_token);
   
     useEffect(() => {
-      console.log("Render the App.js")
+      console.log("useEffect - App.js")
       const urlParams = new URLSearchParams(window.location.search);
       const myToken = JSON.parse(urlParams.get('tokens'));
   
@@ -57,7 +57,9 @@ function App() {
         const newUrl = window.location.href.split('?')[0];
         window.history.replaceState({}, document.title, newUrl);
       }
-    }, []);
+
+      console.log("End Useeffect App.js")
+    }, [auth, access_token]);
 
     const handleLogout = () => {
       // do the logout logic here, e.g. clear the token from localStorage

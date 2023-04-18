@@ -1,16 +1,17 @@
 import customFetch from '../../customFetch';
 
-async function getAllMeetings() {
+async function CreateMeeting(textPayload) {
   
   
   
   const response = await customFetch(
-    `${process.env.REACT_APP_API_BASE_AUTH_DSA}/meetings`,
+    `${process.env.REACT_APP_API_BASE_AUTH_STEPFUNCTION}/makesummary`,
     {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({message: textPayload.replace(/'/g, '\\')})
     }
   );
 
@@ -23,4 +24,4 @@ async function getAllMeetings() {
 
 // Add other service calls here
 
-export { getAllMeetings /*, otherServiceCalls, ... */ };
+export { CreateMeeting /*, otherServiceCalls, ... */ };

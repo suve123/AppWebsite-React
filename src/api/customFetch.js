@@ -11,7 +11,7 @@ async function customFetch(url, options = {}) {
     try {
       const response = await fetch(url, options);
       console.log(`fetched from: ${url}`)
-      console.log(response)
+      //console.log(response.data)
 
       if (response.status === 401) {
         console.log("API request went wrong. We got a 401.")
