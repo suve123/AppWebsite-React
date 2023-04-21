@@ -1,17 +1,19 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TextField, Button, DialogActions } from '@mui/material';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 
 
 
-function Component() {
+function Component({completion, setCompletion}) {
+
+
 
   const auth = useContext(AuthContext);
-  console.log("Rendering Setup")
+  //console.log("Rendering Setup")
 
 
   return (
@@ -24,6 +26,7 @@ function Component() {
             Setup
           </Typography>
           {auth ? (
+            <>
 
               <Typography>
               <a target="_blank" rel="noreferrer" href="https://wa.me/4552513005?text=Hello%20there!%20I%20am%20interested%20in%20your%20services.">
@@ -40,6 +43,26 @@ function Component() {
 
 
               </Typography>
+
+              <TextField
+              autoFocus
+              margin="dense"
+              label="Instruction"
+              fullWidth
+              multiline // Enable multiline
+              rows={30} // Set the number of rows to display
+              value={completion}
+              onChange={(event) => setCompletion(event.target.value)}
+              //onKeyPress={(event) => {  }}
+              />
+              <DialogActions>
+              <Button onClick={``}>Cancel</Button>
+              <Button type="submit" variant="contained" color="primary" onClick={``}>
+              Generate summary now
+              </Button>
+              </DialogActions>
+
+            </>
 
               ) : (
                 <Typography>

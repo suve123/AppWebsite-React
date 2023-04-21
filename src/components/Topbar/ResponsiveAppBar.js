@@ -1,16 +1,15 @@
 
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
+import { Button, Typography, Snackbar, Alert } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
@@ -22,9 +21,7 @@ import logoImage from '../../assets/images/v10d-logo.png';
 
 
 
-
-
-function ResponsiveAppBar({ handleLogout }) {
+function ResponsiveAppBar({ handleLogout, snackOpen, setSnackOpen, snackText, setSnackText }) {
 
   const auth = useContext(AuthContext);
 
@@ -59,11 +56,31 @@ function ResponsiveAppBar({ handleLogout }) {
 
 
 
-  let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse/`)
+  let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse`)
 
+  const handleClick = () => {
+    setSnackOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    console.log("Close click", reason)
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnackOpen(false);
+  };
+
+  let position = { vertical: 'top', horizontal : 'center' }
 
   return (
     <Box>
+      <Snackbar open={snackOpen} autoHideDuration={60000} onClose={handleClose} anchorOrigin={position}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          {snackText}
+        </Alert>
+      </Snackbar>
+
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>

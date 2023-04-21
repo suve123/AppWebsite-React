@@ -37,7 +37,7 @@ function Component() {
               ) : (
                 <Typography>
                 Log in with youe V10d credentials to manage your subscription details:<br /><br />
-                <a href="https://v10dcustomerportal3e07bafe-3e07bafe-dev.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=7g4ns3biqfljptpjdlpqsht97k&redirect_uri=https://67b9-87-104-3-177.eu.ngrok.io/auth/v10dresponse/">Login/SignUp</a>
+                <a href="https://v10dcustomerportal3e07bafe-3e07bafe-dev.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=7g4ns3biqfljptpjdlpqsht97k&redirect_uri=https://67b9-87-104-3-177.eu.ngrok.io/auth/v10dresponse">Login/SignUp</a>
                   <br/><br/>
 
               </Typography>

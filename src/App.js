@@ -1,5 +1,5 @@
 
-import React, { createContext, useState, useEffect  } from 'react';
+import React, { createContext, useState, useEffect, useRef  } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthContext } from './components/AuthContext/AuthContext';
@@ -16,6 +16,8 @@ import MeetingMinder from './components/Meetingminder/MeetingMinder';
 import OrderSuccess from './components/Order/Success';
 
 
+import WebSocketConnection from './api/services/WebSocketConnection';
+
 
 function App() {
 
@@ -27,9 +29,24 @@ function App() {
   
     // Initialize the auth state based on the presence of a JWT token
     const [auth, setAuth] = useState(!!access_token);
-  
+    const [SummaryText, setSummaryText] = useState('Here we go');
+
+    const [completion, setCompletion] = useState('');
+    const completionRef = useRef(completion);
+
+    const [snackOpen, setSnackOpen] = React.useState(false);
+    const [snackText, setSnackText] = React.useState('');
+    
+
+    WebSocketConnection(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText)
+
+    useEffect(() => {
+      completionRef.current = completion;
+    }, [completion]);
+
     useEffect(() => {
       console.log("useEffect - App.js")
+
       const urlParams = new URLSearchParams(window.location.search);
       const myToken = JSON.parse(urlParams.get('tokens'));
   
@@ -70,23 +87,22 @@ function App() {
       // https://v10d-proxy1.ngrok.app
       // https://api.v10d.com/dsa
       
-      let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse/`)
+      let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse`)
       let signOutUrl = `https://oauth.v10d.com/logout?response_type=code&client_id=7g4ns3biqfljptpjdlpqsht97k&redirect_uri=${redirectUri}`
       window.location.assign(signOutUrl);
     };
     
-    
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        <ResponsiveAppBar handleLogout={handleLogout} />
+        <ResponsiveAppBar handleLogout={handleLogout} snackOpen={snackOpen} setSnackOpen={setSnackOpen} snackText={snackText} setSnackText={setSnackText} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<Product />} />
           <Route path="/subscription" element={<Subscription />} />
-          <Route path="/setup" element={<Setup />} />
-          <Route path="/meetingminder" element={<MeetingMinder />} />
+          <Route path="/setup" element={<Setup completion={completion} setCompletion={setCompletion} />} />
+          <Route path="/meetingminder" element={<MeetingMinder SummaryText={SummaryText} setSummaryText={setSummaryText} />}  />
           <Route path="/help" element={<Help />} />
 
           <Route path="/order/success" element={<OrderSuccess />} />

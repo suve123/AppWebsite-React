@@ -5,6 +5,7 @@ import {
   Container,
   Typography,
   Box,
+  Link,
   StepContent,
   Paper,
   Card,
@@ -25,18 +26,21 @@ import NewSummaryModal from './NewSummaryModal';
 import { getAllMeetings } from '../../api/meetingminder/services/getAllMeetings';
 import { getMeeting } from '../../api/meetingminder/services/getMeeting';
 
+import CachedIcon from '@mui/icons-material/Cached';
 
-
-function Component() {
+function Component({SummaryText, setSummaryText}) {
   const auth = useContext(AuthContext);
 
   const [data, setLinks] = useState(null);
   const [summary, setSummary] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loadingTable, setLoadingTable] = useState(false);
+  const [hideTable, setHideTable] = useState(false);
+  const [loadingMeeting, setLoadingMeeting] = useState(false);
 
   const getMeetings = async () => {
     try {
-      setLoading(true);
+      setHideTable(false)
+      setLoadingTable(true);
       const response = await getAllMeetings();
       setLinks(response);
 
@@ -49,21 +53,32 @@ function Component() {
     } catch (e) {
       //setError(`Error fetching user profile: ${e.message}`);
     } finally {
-      setLoading(false);
+      setLoadingTable(false);
     }
   };
 
   async function fetchMeeting(id) {
+    
+    setLoadingMeeting(true);
     const response = await getMeeting(id);
     setSummary(response);
+    setLoadingMeeting(false);
+    setHideTable(true)
+  }
+
+  function handleReload(){
+    setSummary(null);
+    getMeetings();
   }
 
   useEffect(() => {
     console.log("useEffect - Meetingminder.js")
-    getMeetings();
+    if(auth){
+      getMeetings();
+    }
   }, []);
 
-  if (loading) {
+  if (loadingTable) {
     return (
       <Box sx={{ display: 'flex' }}>
         <CircularProgress />
@@ -71,16 +86,22 @@ function Component() {
     );
   }
 
+ 
 
   return (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', '& > :not(style)': { m: 1 } }}>
-        <NewSummaryModal />
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ marginRight: 'auto' }}>
+          &nbsp;&nbsp;MeetingMinder:
+        </Typography>
+
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
+          <Button variant="outlined" startIcon={<CachedIcon />} sx={{ marginRight: 'auto' }} color="primary" onClick={handleReload}>
+              Reload
+          </Button>
       </Box>
-    
-    <Typography variant="h4" component="h1" gutterBottom>
-          MeetingMinder
-    </Typography>
+        <NewSummaryModal reloadAll={getMeetings} dataUpdateMethod={setSummary} />
+      </Box>
 
     <Box>
       <Container maxWidth="xl">
@@ -89,13 +110,39 @@ function Component() {
           {auth ? (
             data ? (
               <div>
-                <MeetingSummaryTable data={data} handleRowSelect={fetchMeeting} />
+                {(hideTable ? 
+                <Link
+                to={`/meetingminder/show/?{params.row.statemachineId}`}
+                onClick={(event) => {
+                  setHideTable(false)
+                  //event.preventDefault(); // Prevent the navigation
+                  //handleRowSelect(params.row.statemachineId);
+                }}
+                //style={{ textDecoration: 'none' }}
+              >
+               <Typography>Show all meetings</Typography>
+              </Link>
+                  
+                :
+                   <MeetingSummaryTable data={data} handleRowSelect={fetchMeeting} />
+
+                )}
                 <br />
-                {summary ?
-                  <MeetingminderDetailsTabs data={summary} />
-                  :
-                  <></>
-                }
+                
+                {loadingMeeting ?
+                  <Box sx={{ display: 'flex' }}>
+                    <CircularProgress />
+                  </Box>
+                  :(
+                      summary ? 
+                        <MeetingminderDetailsTabs reloadAll={getMeetings} dataUpdateMethod={setSummary} data={summary} SummaryText={SummaryText} setSummaryText={setSummaryText} />
+                        
+                        :
+                        <></>
+                  
+                  )
+              }
+                
                 
 
                 

@@ -5,21 +5,24 @@ import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
 import { DataGrid } from '@mui/x-data-grid';
 
-
 const Component = ({ data }) => {
+    
 
-      
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'name', headerName: 'Name', flex: 0.3 },
-  { field: 'role', headerName: 'Role', flex: 1 },
+
+  const columns = [
+    { field: 'time', headerName: 'Time', width: 110 },
+    { field: 'item', headerName: 'Item', flex: 1 },
+    { field: 'who_suggest', headerName: 'Suggested by', flex: 0.25 },
+    { field: 'who_action', headerName: 'Action to', flex: .25 },
+    
+  ];
   
-];
-
-  const rows = data.summary.message?.participants.map((item, index) => ({
+  const rows = data.summary.message?.future_actions.map((item, index) => ({
     id: index,
-    name: item.name,
-    role: item.meeting_role
+    time: item.timestamp,
+    item: item.item,
+    who_suggest: item.suggested_by,
+    who_action: item.assigned_to,
   }));
 
   if(!data.summary.message){

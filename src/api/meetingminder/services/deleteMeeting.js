@@ -1,10 +1,13 @@
-import customFetch from '../customFetch';
+import customFetch from '../../customFetch';
 
-async function createCustomerPortalSession() {
+async function deleteMeeting(arn) {
+  
+  
+  
   const response = await customFetch(
-    `https://api.v10d.com/v1/stripe/createCustomerPortalSession`,
+    `${process.env.REACT_APP_API_BASE_AUTH_DSA}/meeting/${arn}`,
     {
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -20,4 +23,4 @@ async function createCustomerPortalSession() {
 
 // Add other service calls here
 
-export { createCustomerPortalSession /*, otherServiceCalls, ... */ };
+export { deleteMeeting /*, otherServiceCalls, ... */ };

@@ -15,12 +15,16 @@ const Component = ({ data }) => {
     
   ];
   
-    const rows = data.summary.message.meeting_titles.map((item, index) => ({
-      id: index,
-      title: item,
-    }));
+  const rows = data.summary.message?.meeting_titles.map((item, index) => ({
+    id: index,
+    title: item,
+  }));
 
-
+  if(!data.summary.message){
+    return (
+      <><Typography>No data show - properly it was not possible to process the data given.</Typography></>
+    )
+  }
 
   return (
     <>

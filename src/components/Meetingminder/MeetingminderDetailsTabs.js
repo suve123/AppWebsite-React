@@ -1,13 +1,16 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Tabs, Tab, Box, AppBar } from '@mui/material';
+import React, { useContext, useState, useEffect } from 'react';
+import { Typography, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Tabs, Tab, Box, AppBar } from '@mui/material';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import TabTitles from './Tabs/Titles';
 import Participiants from './Tabs/Participiants';
 import Summaries from './Tabs/Summaries';
+import Actions from './Tabs/Actions';
 
+import { deleteMeeting } from '../../api/meetingminder/services/deleteMeeting';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -42,26 +45,72 @@ function TabPanel(props) {
     };
   }
 
-const Component = ({ data }) => {
-    
-    console.log("Detail here....")
-    console.log(data)
-  //const { items } = data.output;
+const Component = ({ data, reloadAll, dataUpdateMethod, SummaryText, setSummaryText }) => {
+
+    console.log("MeetingMinderDetailTabs comp.")
 
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  console.log("Initial value:", value);
 
   const handleChange = (event, newValue) => {
+    console.log("Setting handleChange value to",newValue)
     setValue(newValue);
   };
 
   const handleChangeIndex = (index) => {
+    console.log("Setting handleChangeIndex value to",index)
     setValue(index);
   };
+   
 
-    
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDeleteMeeting = async () => {
+    await deleteMeeting(data.statemachineId);
+    dataUpdateMethod(null);
+    reloadAll();
+    setOpen(false);
+  };
+
   return (
     <>
+    <div>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
+          <Button variant="outlined" startIcon={<DeleteIcon />} sx={{ marginRight: 'auto' }} color="primary" onClick={handleClickOpen}>
+              Delete meeting
+          </Button>
+      </Box>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Delete the selected meeting?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Delete the selected meeting that is shown below. You can not undo this operation.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleDeleteMeeting} autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
 
     <Box sx={{ bgcolor: 'background.paper', width: '100%' }}>
       <AppBar position="static">
@@ -74,8 +123,10 @@ const Component = ({ data }) => {
           aria-label="full width tabs example"
         >
           <Tab label="Meeting title" {...a11yProps(0)} />
-          <Tab label="Participiants" {...a11yProps(1)} />
-          <Tab label="Summaries" {...a11yProps(2)} />
+          <Tab label="Actions" {...a11yProps(1)} />
+          <Tab label="Participiants" {...a11yProps(2)} />
+          <Tab label="Summaries" {...a11yProps(3)}  />
+          
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -87,10 +138,13 @@ const Component = ({ data }) => {
             <TabTitles data={data}></TabTitles>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-            <Participiants data={data}></Participiants>          
+            <Actions data={data}></Actions>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-            <Summaries data={data}></Summaries>
+          <Participiants data={data}></Participiants>         
+        </TabPanel>
+        <TabPanel value={value} index={3} dir={theme.direction}>
+          <Summaries data={data} SummaryText={SummaryText} setSummaryText={setSummaryText}></Summaries>
         </TabPanel>
       </SwipeableViews>
     </Box>
