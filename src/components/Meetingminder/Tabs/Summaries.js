@@ -76,7 +76,7 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
         </Button> Click arrows to get suggestions. Fix the Instruction to get desired results.
         </Box>
               <TextField
-                  autoFocus
+                  //autoFocus
                   margin="dense"
                   label="Instruction"
                   fullWidth
@@ -93,7 +93,7 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
                 </Button>
               </DialogActions>
               <TextField
-                  autoFocus
+                  //autoFocus
                   margin="dense"
                   label="Summary text"
                   fullWidth
@@ -105,7 +105,7 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
             />
               <DialogActions>
                 <Button onClick={handleCancel}>Cancel</Button>
-                <Button type="submit" variant="contained" color="primary" onClick={``}>
+                <Button type="submit" variant="contained" color="primary" onClick={handleCancel}>
                   Save
                 </Button>
               </DialogActions>

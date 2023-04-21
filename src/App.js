@@ -29,7 +29,7 @@ function App() {
   
     // Initialize the auth state based on the presence of a JWT token
     const [auth, setAuth] = useState(!!access_token);
-    const [SummaryText, setSummaryText] = useState('Here we go');
+    const [SummaryText, setSummaryText] = useState('');
 
     const [completion, setCompletion] = useState('');
     const completionRef = useRef(completion);
