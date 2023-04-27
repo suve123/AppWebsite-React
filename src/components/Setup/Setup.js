@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 
 
 
-function Component({completion, setCompletion}) {
+function Component() {
 
 
 
@@ -29,6 +29,8 @@ function Component({completion, setCompletion}) {
             <>
 
               <Typography>
+              In this section you will sonn be able to configure and setup your MeetingMinder and Smart Assistance products.
+              <br /><br /><br />Test links:<br />
               <a target="_blank" rel="noreferrer" href="https://wa.me/4552513005?text=Hello%20there!%20I%20am%20interested%20in%20your%20services.">
                 Start a chat on WhatsApp - let me know about V10d
               </a>
@@ -43,24 +45,7 @@ function Component({completion, setCompletion}) {
 
 
               </Typography>
-
-              <TextField
-              autoFocus
-              margin="dense"
-              label="Instruction"
-              fullWidth
-              multiline // Enable multiline
-              rows={30} // Set the number of rows to display
-              value={completion}
-              onChange={(event) => setCompletion(event.target.value)}
-              //onKeyPress={(event) => {  }}
-              />
-              <DialogActions>
-              <Button onClick={``}>Cancel</Button>
-              <Button type="submit" variant="contained" color="primary" onClick={``}>
-              Generate summary now
-              </Button>
-              </DialogActions>
+             
 
             </>
 

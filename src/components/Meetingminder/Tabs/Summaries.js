@@ -6,12 +6,17 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { generateSummary } from '../../../api/meetingminder/services/generateSummary';
 
 
-const Component = ({ data, SummaryText, setSummaryText }) => {
+const Component = ({ data, SummaryText, setSummaryText, setTriggerEffect }) => {
 
     const textItems = [
         'Please generate a detailed and comprehensive summary of the provided meeting transcript, which took place in a professional setting. The summary should be around 700 words in length, capturing the main discussion points, key decisions, and relevant action items from the meeting.',
         'Provide a short 300 word summary of the primary challenges and obstacles discussed in the meeting, as well as the proposed strategies and action plans to address these challenges.',
+        'Provide a short 100 word summary of the meeting as a poem.',
         'What were the quantitative goals discussed during the session?',
+        'Based on the summary of the last meeting, create an agenda that focuses on discussing and addressing unresolved challenges and action items.',
+        'Craft an executive management summary of the meeting, emphasizing strategic insights, key decisions, and actionable recommendations for top leadership to consider.',
+        'Prepare an anonymized summary of the meeting suitable for external stakeholders, highlighting main discussion points and outcomes, while preserving confidentiality and sensitive information.',
+        'Create a meeting summary tailored for the company\'s marketing team, focusing on potential new initiatives, product developments, and market insights that could shape their strategies.',
         'Summarize the main outcomes and decisions of the meeting, including any consensus reached, new initiatives launched, or action items assigned to specific individuals or teams.',
         'Analyze the interpersonal dynamics during the meeting, focusing on the key roles and contributions of each participant, and how these roles influenced the overall direction and outcome of the discussions.',
         'Create a concise summary of the main learnings and takeaways from the meeting, emphasizing any new insights or perspectives gained by the participants and how these may influence future decision-making.',
@@ -38,11 +43,12 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
 
     const  handleGenerateSummary = async (event) => {
         event.preventDefault();
+        setTriggerEffect(prevValue => prevValue + 1) // Testing if Websocket is connected or connect it
+        setSummaryText('Please wait for the result...... It will typically start arriving in a few seconds....')
         let prompt = PromptText
-        const reponse = await generateSummary(prompt, data.summary.message.summary_long)
-        console.log("Here we are - AFTER we have got the repnse")
-        console.log(reponse)
-        setSummaryText('Please wait for the result...... It will typically take less than a minute....')
+        const response = await generateSummary(prompt, data.summary.message.summary_long)
+        console.log("The request has been delivered to the backend - we will wait for Websocket answer.")
+        //console.log(response)
 
     };
     
@@ -73,7 +79,7 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
             onClick={() => setThePromptText(currentIndex + 1)}
         >
             <ArrowForwardIcon />
-        </Button> Click arrows to get suggestions. Fix the Instruction to get desired results.
+        </Button> Click arrows to some possible instructions. Fix the Instruction to get desired results.
         </Box>
               <TextField
                   //autoFocus
@@ -87,7 +93,9 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
                   //onKeyPress={(event) => {  }}
               />
                <DialogActions>
+                {/* 
                 <Button onClick={handleCancel}>Cancel</Button>
+                */}
                 <Button type="submit" variant="contained" color="primary" onClick={handleGenerateSummary}>
                   Generate summary now
                 </Button>
@@ -104,12 +112,14 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
 //                  onKeyPress={(event) => {   }}
             />
               <DialogActions>
+                {/* 
                 <Button onClick={handleCancel}>Cancel</Button>
                 <Button type="submit" variant="contained" color="primary" onClick={handleCancel}>
                   Save
                 </Button>
+                */}
               </DialogActions>
-              
+              {/*
               <Typography variant="h4" component="h1" gutterBottom>The short summaries</Typography>
               <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -132,9 +142,9 @@ const Component = ({ data, SummaryText, setSummaryText }) => {
                 </TableBody>
                 </Table>
             </TableContainer>
-            
+            */}
             <Typography variant="h4" component="h1" gutterBottom>The long summaries</Typography>
-            <Typography gutterBottom>The long summaries are the basis for the generated summaries. The digital assistant will take these texts as the input when you ask for summaries. In a soon to come version you will be able to fix and adjust the content in the long summaries. Untill then - you will have to pass instructions when generating the summary to have errors and misunderstandings fixed. </Typography>
+            <Typography gutterBottom>The long summaries are the basis for the generated summaries. The digital assistant will take these texts as the input when you ask for summaries. In a soon to come version you will be able to fix and adjust the content in the long summaries. Untill then - you will have to pass instructions when generating the summary to have errors and misunderstandings fixed.<br /><br /></Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>

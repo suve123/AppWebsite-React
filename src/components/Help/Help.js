@@ -3,6 +3,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import {StepContent, Paper, Card, CardMedia, CardContent, CardActions, Button, Container,Typography,Box} from '@mui/material';
 
+import YoutubeEmbed from "../YoutubeEmbedd";
+
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
@@ -132,9 +134,12 @@ function Component() {
                 <Typography variant="h5" component="h1" gutterBottom>
 
                 <br />
-</Typography>
-
-
+              </Typography>
+              <div className="App">
+                    <h1>Learn about MeetingMinder:</h1>
+                    <YoutubeEmbed embedId="omk0i4r4N90" />
+                  </div>
+                  <br /><br />
                 <Box sx={{ float: 'left', marginRight: '10px', marginBottom: '10px' }}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia

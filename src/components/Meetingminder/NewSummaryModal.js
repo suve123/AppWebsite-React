@@ -19,7 +19,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import NavigationIcon from '@mui/icons-material/Navigation'
 import { CreateMeeting } from '../../api/meetingminder/services/createMeeting';
 
-const Component = ({ reloadAll, dataUpdateMethod }) => {
+const Component = ({ reloadAll, dataUpdateMethod, setTriggerEffect }) => {
   const [open, setOpen] = useState(false);
   const [summaryText, setSummaryText] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -43,6 +43,8 @@ const Component = ({ reloadAll, dataUpdateMethod }) => {
     console.log(reponse)
     
     setShowConfirmation(true);
+
+    setTriggerEffect(prevValue => prevValue + 1);
     //handleClose();
     // Do something with the summary text, such as sending it to the server
   };

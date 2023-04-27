@@ -7,7 +7,7 @@ async function customFetch(url, options = {}) {
         Authorization: `Bearer ${accessToken}`,
       };
     }
-  
+    console.log("Token in request", accessToken)
     try {
       const response = await fetch(url, options);
       console.log(`fetched from: ${url}`)

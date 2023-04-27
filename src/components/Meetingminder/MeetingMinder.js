@@ -13,11 +13,11 @@ import {
   CardContent,
   CardActions,
   Button,
-  Fab
+  Grid
 } from '@mui/material';
 
 import NavigationIcon from '@mui/icons-material/Navigation'
-
+import YoutubeEmbed from "../YoutubeEmbedd";
 import MeetingSummaryTable from './MeetingSummaryTable';
 import MeetingminderDetailsTabs from './MeetingminderDetailsTabs';
 import NewSummaryModal from './NewSummaryModal';
@@ -28,7 +28,7 @@ import { getMeeting } from '../../api/meetingminder/services/getMeeting';
 
 import CachedIcon from '@mui/icons-material/Cached';
 
-function Component({SummaryText, setSummaryText}) {
+function Component({SummaryText, setSummaryText, setTriggerEffect}) {
   const auth = useContext(AuthContext);
 
   const [data, setLinks] = useState(null);
@@ -85,30 +85,45 @@ function Component({SummaryText, setSummaryText}) {
       </Box>
     );
   }
+  let redirectUri = encodeURIComponent(`https://${process.env.REACT_APP_DSAAPI_URLPATH}/auth/v10dresponse`)
 
  
 
   return (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
-        <Typography variant="h4" component="h1" gutterBottom sx={{ marginRight: 'auto' }}>
-          &nbsp;&nbsp;MeetingMinder:
-        </Typography>
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
-          <Button variant="outlined" startIcon={<CachedIcon />} sx={{ marginRight: 'auto' }} color="primary" onClick={handleReload}>
-              Reload
-          </Button>
-      </Box>
-        <NewSummaryModal reloadAll={getMeetings} dataUpdateMethod={setSummary} />
-      </Box>
 
-    <Box>
-      <Container maxWidth="xl">
-        <Box sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
-         
+   
           {auth ? (
-            data ? (
+            <>
+                <Box sx={{ flexGrow: 1, display: 'flex', '& > :not(style)': { m: 1 }}}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={4}>
+                      <Box sx={{ textAlign: 'left' }}>
+                        <Typography variant="h4" component="h1" gutterBottom sx={{ marginRight: 'auto' }}>
+                          MeetingMinder:
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                      <Box sx={{ textAlign: 'center' }}>
+                        <Button variant="outlined" startIcon={<CachedIcon />} sx={{ marginRight: 'auto' }} color="primary" onClick={handleReload}>
+                            Reload
+                        </Button>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                      <Box sx={{ textAlign: 'right' }}>
+                          <NewSummaryModal reloadAll={getMeetings} dataUpdateMethod={setSummary} setTriggerEffect={setTriggerEffect} />
+                      </Box>
+                    </Grid>
+                  </Grid>
+                </Box>
+                <Box>
+                <Container maxWidth="xl">
+                  <Box sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
+                
+            { data ? (
               <div>
                 {(hideTable ? 
                 <Link
@@ -135,7 +150,7 @@ function Component({SummaryText, setSummaryText}) {
                   </Box>
                   :(
                       summary ? 
-                        <MeetingminderDetailsTabs reloadAll={getMeetings} dataUpdateMethod={setSummary} data={summary} SummaryText={SummaryText} setSummaryText={setSummaryText} />
+                        <MeetingminderDetailsTabs reloadAll={getMeetings} dataUpdateMethod={setSummary} data={summary} SummaryText={SummaryText} setSummaryText={setSummaryText} setTriggerEffect={setTriggerEffect}  />
                         
                         :
                         <></>
@@ -149,20 +164,30 @@ function Component({SummaryText, setSummaryText}) {
               </div>
             ) : (
               <Typography>[coming]</Typography>
-            )
+            )}
+            </Box>
+            </Container>
+          </Box>
+          </>
           ) : (
             <>
+             <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
               <Typography gutterBottom>
-                 ...
+                <div className="App">
+                    <h1>Learn about MeetingMinder & Sign in to try:</h1>
+                    <YoutubeEmbed embedId="omk0i4r4N90" />
+                 </div>
               </Typography>
-              <Typography gutterBottom>
-                 ...
+              </Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', '& > :not(style)': { m: 1 } }}>
+              <Typography>
+                  <br />
+                  100% free trial for 14 days: <a href={`https://oauth.v10d.com/login?response_type=code&client_id=7g4ns3biqfljptpjdlpqsht97k&redirect_uri=${redirectUri}`}>Login/SignUp</a>
               </Typography>
+              </Box>
             </>
           )}
-        </Box>
-      </Container>
-    </Box>
+
   </>
   );
 }

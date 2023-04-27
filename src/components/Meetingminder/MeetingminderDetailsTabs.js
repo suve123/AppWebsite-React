@@ -45,7 +45,7 @@ function TabPanel(props) {
     };
   }
 
-const Component = ({ data, reloadAll, dataUpdateMethod, SummaryText, setSummaryText }) => {
+const Component = ({ data, reloadAll, dataUpdateMethod, SummaryText, setSummaryText, setTriggerEffect }) => {
 
     console.log("MeetingMinderDetailTabs comp.")
 
@@ -144,7 +144,7 @@ const Component = ({ data, reloadAll, dataUpdateMethod, SummaryText, setSummaryT
           <Participiants data={data}></Participiants>         
         </TabPanel>
         <TabPanel value={value} index={3} dir={theme.direction}>
-          <Summaries data={data} SummaryText={SummaryText} setSummaryText={setSummaryText}></Summaries>
+          <Summaries data={data} SummaryText={SummaryText} setSummaryText={setSummaryText} setTriggerEffect={setTriggerEffect} ></Summaries>
         </TabPanel>
       </SwipeableViews>
     </Box>

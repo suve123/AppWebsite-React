@@ -37,14 +37,17 @@ function App() {
     const [snackOpen, setSnackOpen] = React.useState(false);
     const [snackText, setSnackText] = React.useState('');
     
+    const [triggerEffect, setTriggerEffect] = React.useState(0);
+    
+    
+    WebSocketConnection(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText, triggerEffect)
 
-    WebSocketConnection(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText)
 
     useEffect(() => {
       completionRef.current = completion;
     }, [completion]);
 
-    useEffect(() => {
+    useEffect( () => {
       console.log("useEffect - App.js")
 
       const urlParams = new URLSearchParams(window.location.search);
@@ -67,13 +70,17 @@ function App() {
         localStorage.setItem('groups', decodedToken['cognito:groups']);
         localStorage.setItem('email', myToken.email);
 
-
         console.log(decodedToken);
 
         // Remove the JWT token from the URL
         const newUrl = window.location.href.split('?')[0];
         window.history.replaceState({}, document.title, newUrl);
+        
+        
       }
+      console.log("Trying to triger Websocket")
+      setTriggerEffect(prevValue => prevValue + 1) // We trigger the Websocket connect
+      console.log("Done Trying to triger Websocket")
 
       console.log("End Useeffect App.js")
     }, [auth, access_token]);
@@ -101,8 +108,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<Product />} />
           <Route path="/subscription" element={<Subscription />} />
-          <Route path="/setup" element={<Setup completion={completion} setCompletion={setCompletion} />} />
-          <Route path="/meetingminder" element={<MeetingMinder SummaryText={SummaryText} setSummaryText={setSummaryText} />}  />
+          <Route path="/setup" element={<Setup />} />
+          <Route path="/meetingminder" element={<MeetingMinder SummaryText={SummaryText} setSummaryText={setSummaryText} setTriggerEffect={setTriggerEffect} />}  />
           <Route path="/help" element={<Help />} />
 
           <Route path="/order/success" element={<OrderSuccess />} />
