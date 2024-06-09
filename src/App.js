@@ -10,6 +10,8 @@ import jwtDecode from 'jwt-decode';
 import ResponsiveAppBar from './components/Topbar/ResponsiveAppBar';
 import Subscription from './components/Subscription/Subscription';
 import Help from './components/Help/Help';
+import Assistant from './components/Assistant/Assistant';
+
 import Setup from './components/Setup/Setup';
 import LoginError from './components/LoginError/LoginError';
 import MeetingMinder from './components/Meetingminder/MeetingMinder';
@@ -40,7 +42,7 @@ function App() {
     const [triggerEffect, setTriggerEffect] = React.useState(0);
     
     
-    WebSocketConnection(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText, triggerEffect)
+    WebSocketConnection(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText, triggerEffect, setTriggerEffect)
 
 
     useEffect(() => {
@@ -107,6 +109,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<Product />} />
+          <Route path="/assistant" element={<Assistant />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route path="/setup" element={<Setup />} />
           <Route path="/meetingminder" element={<MeetingMinder SummaryText={SummaryText} setSummaryText={setSummaryText} setTriggerEffect={setTriggerEffect} />}  />

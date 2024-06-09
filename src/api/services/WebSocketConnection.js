@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const WEBSOCKET_URL = 'wss://32eij3c2ik.execute-api.eu-central-1.amazonaws.com/Prod';
 
-function App(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText, triggerEffect) {
+function App(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnackText, triggerEffect, setTriggerEffect) {
   //const [taskResult, setTaskResult] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [socket, setSocket] = useState(null);
@@ -69,9 +69,14 @@ function App(setSummaryText, setCompletion, completionRef, setSnackOpen, setSnac
         });
 
         const pingInterval = setInterval(() => {
-            if (socket.readyState === WebSocket.OPEN) {
+            if (socket?.readyState === WebSocket.OPEN) {
                 socket.send(JSON.stringify({ type: 'ping' }));
                 console.log("Websocket has been pinged.")
+            }else{
+              // The conection seems to not be here?
+              console.error("We shoudl do something?? We are not connected by trying to keep it alive... Very like this is the Token that has expired!!!!! We need to make sure to refresh that!")
+              console.error(webSocket)
+              // setTriggerEffect(prevValue => prevValue + 1) // We trigger the Websocket connect - but we should properly make sure that the Token has been refreshed first.
             }
         }, 240000); // Ping every 4 minutes
 

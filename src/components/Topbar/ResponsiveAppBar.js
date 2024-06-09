@@ -26,7 +26,7 @@ function ResponsiveAppBar({ handleLogout, snackOpen, setSnackOpen, snackText, se
   const auth = useContext(AuthContext);
 
 
-  const pages = ['Home', 'Products', 'Subscription', 'Setup', 'Meetingminder', 'Help'];
+  const pages = ['Home', 'Products', 'Subscription','Assistant', 'Setup', 'Meetingminder', 'Help'];
 
 
   const settings = [
