@@ -1,0 +1,172 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-v10dcustomerportal-dev-124408-authRole",
+      "UnauthRoleArn": "arn:aws:iam::025298919073:role/amplify-v10dcustomerportal-dev-124408-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::025298919073:role/amplify-v10dcustomerportal-dev-124408-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-v10dcustomerportal-dev-124408-deployment",
+      "UnauthRoleName": "amplify-v10dcustomerportal-dev-124408-unauthRole",
+      "StackName": "amplify-v10dcustomerportal-dev-124408",
+      "StackId": "arn:aws:cloudformation:eu-central-1:025298919073:stack/amplify-v10dcustomerportal-dev-124408/9f84b0a0-d78c-11ed-8a5b-0a403f4e90a4",
+      "AmplifyAppId": "d3sjmxhmuwl4hq",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-v10dcustomerportal-dev-124408-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    }
+  },
+  "function": {
+    "v10dcustomerportal3e07bafeDefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2023-04-10T12:00:20.608Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-04-10T12:00:20.669Z",
+      "distZipFilename": "v10dcustomerportal3e07bafeDefineAuthChallenge-2b64502b4750344a6731-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-v10dcustomerportal-dev-124408-deployment",
+        "s3Key": "amplify-builds/v10dcustomerportal3e07bafeDefineAuthChallenge-2b64502b4750344a6731-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-v10dcustomerportal-dev-124408-deployment/amplify-cfn-templates/function/v10dcustomerportal3e07bafeDefineAuthChallenge-cloudformation-template.json",
+        "logicalId": "functionv10dcustomerportal3e07bafeDefineAuthChallenge"
+      },
+      "lastPushTimeStamp": "2023-04-10T12:33:42.991Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::025298919073:role/v10dcustomerportal3e07bafeDefineAuthChallenge-dev",
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:lambda:eu-central-1:025298919073:function:v10dcustomerportal3e07bafeDefineAuthChallenge-dev",
+        "Name": "v10dcustomerportal3e07bafeDefineAuthChallenge-dev",
+        "LambdaExecutionRole": "v10dcustomerportal3e07bafeDefineAuthChallenge-dev"
+      },
+      "lastPushDirHash": "7hSNwSfy/1Oxoj6SvNzerTd2Dw4="
+    },
+    "v10dcustomerportal3e07bafeCreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2023-04-10T12:00:20.614Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-04-10T12:00:20.677Z",
+      "distZipFilename": "v10dcustomerportal3e07bafeCreateAuthChallenge-4b326334496a6c764f4b-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-v10dcustomerportal-dev-124408-deployment",
+        "s3Key": "amplify-builds/v10dcustomerportal3e07bafeCreateAuthChallenge-4b326334496a6c764f4b-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-v10dcustomerportal-dev-124408-deployment/amplify-cfn-templates/function/v10dcustomerportal3e07bafeCreateAuthChallenge-cloudformation-template.json",
+        "logicalId": "functionv10dcustomerportal3e07bafeCreateAuthChallenge"
+      },
+      "lastPushTimeStamp": "2023-04-10T12:33:43.003Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::025298919073:role/v10dcustomerportal3e07bafeCreateAuthChallenge-dev",
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:lambda:eu-central-1:025298919073:function:v10dcustomerportal3e07bafeCreateAuthChallenge-dev",
+        "Name": "v10dcustomerportal3e07bafeCreateAuthChallenge-dev",
+        "LambdaExecutionRole": "v10dcustomerportal3e07bafeCreateAuthChallenge-dev"
+      },
+      "lastPushDirHash": "LK0n3c9++9U6uwPRwYacDWvxLMo="
+    },
+    "v10dcustomerportal3e07bafeVerifyAuthChallengeResponse": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2023-04-10T12:00:20.618Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-04-10T12:00:21.784Z",
+      "distZipFilename": "v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-2b5a746568712b2b7a31-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-v10dcustomerportal-dev-124408-deployment",
+        "s3Key": "amplify-builds/v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-2b5a746568712b2b7a31-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-v10dcustomerportal-dev-124408-deployment/amplify-cfn-templates/function/v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-cloudformation-template.json",
+        "logicalId": "functionv10dcustomerportal3e07bafeVerifyAuthChallengeResponse"
+      },
+      "lastPushTimeStamp": "2023-04-10T12:33:43.018Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::025298919073:role/v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-dev",
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:lambda:eu-central-1:025298919073:function:v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-dev",
+        "Name": "v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-dev",
+        "LambdaExecutionRole": "v10dcustomerportal3e07bafeVerifyAuthChallengeResponse-dev"
+      },
+      "lastPushDirHash": "Koh9T+rTdQImFxL7PPUxgS5Vchk="
+    }
+  },
+  "auth": {
+    "v10dcustomerportal3e07bafe": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "v10dcustomerportal3e07bafeDefineAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "v10dcustomerportal3e07bafeCreateAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "v10dcustomerportal3e07bafeVerifyAuthChallengeResponse",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "customAuth": true,
+      "frontendAuthConfig": {
+        "socialProviders": [
+          "FACEBOOK"
+        ],
+        "usernameAttributes": [
+          "EMAIL",
+          "PHONE_NUMBER"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-v10dcustomerportal-dev-124408-deployment/amplify-cfn-templates/auth/v10dcustomerportal3e07bafe-cloudformation-template.json",
+        "logicalId": "authv10dcustomerportal3e07bafe"
+      },
+      "lastPushTimeStamp": "2023-04-10T12:33:43.214Z",
+      "output": {
+        "UserPoolId": "eu-central-1_F7KxhP8OK",
+        "AppClientIDWeb": "7g4ns3biqfljptpjdlpqsht97k",
+        "AppClientID": "409svalhiandqil03gle46tu16",
+        "HostedUIDomain": "v10dcustomerportal3e07bafe-3e07bafe-dev",
+        "IdentityPoolId": "eu-central-1:2dc9c0c5-2117-4b4c-99c7-abc28db7a755",
+        "UserPoolArn": "arn:aws:cognito-idp:eu-central-1:025298919073:userpool/eu-central-1_F7KxhP8OK",
+        "IdentityPoolName": "v10dcustomerportal3e07bafe_identitypool_3e07bafe__dev",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://67b9-87-104-3-177.eu.ngrok.io/auth/v10dresponse/\"],\"LogoutURLs\":[\"https://67b9-87-104-3-177.eu.ngrok.io/auth/v10dresponse/\"]}",
+        "UserPoolName": "v10dcustomerportal3e07bafe_userpool_3e07bafe"
+      },
+      "lastPushDirHash": "Pzr3/LHdv12eQjdEBh9VQbVvFlA="
+    }
+  }
+}
