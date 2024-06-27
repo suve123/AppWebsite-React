@@ -1,6 +1,6 @@
 
 import React, { useContext, useState, useEffect  } from 'react';
-import { AuthContext } from '../AuthContext/AuthContext';
+import { AuthContext } from '../AuthContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';

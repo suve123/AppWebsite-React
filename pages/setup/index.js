@@ -1,4 +1,4 @@
-import Setup from '../components/Setup';
+import Setup from '../../components/Setup/';
 
 const SetupPage = () => <Setup />;
 

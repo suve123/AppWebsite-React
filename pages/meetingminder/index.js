@@ -1,4 +1,4 @@
-import MeetingMinder from '../components/MeetingMinder';
+import MeetingMinder from '../../components/MeetingMinder/MeetingMinder';
 
 const MeetingMinderPage = ({ SummaryText, setSummaryText, setTriggerEffect }) => (
   <MeetingMinder

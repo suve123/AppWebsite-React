@@ -2,5 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/tc/[id]": "pages/tc/[id].js"
+  "/": "pages/index.js",
+  "/assistant": "pages/assistant.js",
+  "/subscription": "pages/subscription.js",
+  "/products": "pages/products.js",
+  "/home": "pages/home.js"
 }

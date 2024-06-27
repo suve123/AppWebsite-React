@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
 import { DataGrid, GridToolbarContainer, GridToolbarExport, GridToolbarColumnsButton, GridToolbarFilterButton, GridToolbarDensitySelector } from '@mui/x-data-grid';
-import { Link } from 'react-router-dom'; // Import the Link component
+//import { Link } from 'react-router-dom'; // Import the Link component
 
 
 const MeetingSummaryTable = ({ data, handleRowSelect }) => {
@@ -64,7 +64,9 @@ const MeetingSummaryTable = ({ data, handleRowSelect }) => {
         const targetComponentPath = `/meetingminder/show/?{params.row.statemachineId}`; // Replace this with the desired path
         //console.log("Select item")
         //console.log(params)
+        /*
         return (
+         
           <Link
             to={targetComponentPath}
             onClick={(event) => {
@@ -75,7 +77,9 @@ const MeetingSummaryTable = ({ data, handleRowSelect }) => {
           >
             {params.value}
           </Link>
+          
         );
+        */
       },
     },
 /*

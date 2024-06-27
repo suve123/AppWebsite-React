@@ -1,4 +1,4 @@
-import Assistant from '../components/Assistant';
+import Assistant from '../../components/Assistant';
 
 const AssistantPage = () => <Assistant />;
 

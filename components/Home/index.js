@@ -1,11 +1,11 @@
 
 import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../AuthContext/AuthContext';
+import { AuthContext } from '../AuthContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import BillingButton from '../BillingButton/BillingButton';
+import BillingButton from '../BillingButton/index.js';
 
 import {createCustomerPortalSession} from '../../src/api/services/createCustomerPortalSession';
 

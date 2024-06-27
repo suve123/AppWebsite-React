@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../AuthContext/AuthContext';
+import { AuthContext } from '../AuthContext';
 import {
   CircularProgress,
   Container,

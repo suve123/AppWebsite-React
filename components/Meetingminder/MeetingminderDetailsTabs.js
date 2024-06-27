@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Typography, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, Tabs, Tab, Box, AppBar } from '@mui/material';
 import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
+//import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -129,6 +129,18 @@ const Component = ({ data, reloadAll, dataUpdateMethod, SummaryText, setSummaryT
           
         </Tabs>
       </AppBar>
+    </Box>
+
+    
+        
+        
+
+
+    </>
+  );
+};
+
+/*
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={value}
@@ -147,15 +159,7 @@ const Component = ({ data, reloadAll, dataUpdateMethod, SummaryText, setSummaryT
           <Summaries data={data} SummaryText={SummaryText} setSummaryText={setSummaryText} setTriggerEffect={setTriggerEffect} ></Summaries>
         </TabPanel>
       </SwipeableViews>
-    </Box>
 
-    
-        
-        
-
-
-    </>
-  );
-};
+*/
 
 export default Component;

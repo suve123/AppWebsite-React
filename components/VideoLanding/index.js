@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../AuthContext/AuthContext';
+import { AuthContext } from '../AuthContext';
 import { Fab, Typography, Button, Grid, TextField, Box, Container, MenuItem, Avatar, IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
