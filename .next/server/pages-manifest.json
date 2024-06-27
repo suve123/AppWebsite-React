@@ -2,7 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/video": "pages/video.js",
-  "/home": "pages/home.js",
   "/tc/[id]": "pages/tc/[id].js"
 }
