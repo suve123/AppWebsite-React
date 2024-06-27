@@ -3,8 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/assistant": "pages/assistant.js",
-  "/subscription": "pages/subscription.js",
-  "/products": "pages/products.js",
-  "/home": "pages/home.js"
+  "/meetingminder": "pages/meetingminder.js"
 }

@@ -27,25 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/assistant": [
+    "/meetingminder": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/assistant.js"
-    ],
-    "/home": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/home.js"
-    ],
-    "/products": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/products.js"
-    ],
-    "/subscription": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/subscription.js"
+      "static/chunks/pages/meetingminder.js"
     ]
   },
   "ampFirstPages": []

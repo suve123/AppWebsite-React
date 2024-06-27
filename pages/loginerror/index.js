@@ -1,4 +1,4 @@
-import LoginError from '../components/LoginError';
+import LoginError from '../../components/LoginError';
 
 const LoginErrorPage = () => <LoginError />;
 

@@ -1,6 +1,6 @@
 
 import React, { useContext } from 'react';
-import { AuthContext } from '../AuthContext/AuthContext';
+//import { AuthContext } from '../AuthContext/AuthContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -10,7 +10,10 @@ import Container from '@mui/material/Container';
 
 function Component() {
 
-  const auth = useContext(AuthContext);
+  //const auth = useContext(AuthContext);
+
+  var auth = false;
+
   console.log("Rendering Setup")
 
 
