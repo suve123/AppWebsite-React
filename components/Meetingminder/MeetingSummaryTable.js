@@ -41,6 +41,7 @@ const MeetingSummaryTable = ({ data, handleRowSelect }) => {
         const targetComponentPath = `/meetingminder/show/?{params.row.statemachineId}`; // Replace this with the desired path
         //console.log("Select item")
         //console.log(params)
+        /*
         return (
           <Link
             to={targetComponentPath}
@@ -53,6 +54,7 @@ const MeetingSummaryTable = ({ data, handleRowSelect }) => {
             {params.value}
           </Link>
         );
+        */
       },
     },
     { field: 'time', headerName: 'Time', width: 150 },

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+
+import Link from 'next/link';
 
 import {createCustomerPortalSession} from '../../src/api/services/createCustomerPortalSession';
 
