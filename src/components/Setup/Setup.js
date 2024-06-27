@@ -133,7 +133,7 @@ function Component() {
               UserId: {setup.userId}<br />
               E-mail: {setup.email}<br />
               Account created: {setup.createdTime}<br />
-              Subscriptions on account: {setup.subscriptions.join(',')}<br />
+              Subscriptions on account: {setup.subscriptions?.join(',')}<br />
               <br />
               </Typography>
               {showConnectedAccounts()}

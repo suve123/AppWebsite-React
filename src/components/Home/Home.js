@@ -22,44 +22,40 @@ function Component() {
   
   return (
     <Box>
-      
       <Container maxWidth="xl">
         <Box sx={{ marginTop: '2rem', marginBottom: '2rem' }}>
-          {/* Your main content goes here */}
+          {/* Main content */}
           <Typography variant="h4" component="h1" gutterBottom>
-            V10d Smart Assistant - Order & Configuration
+            V10D Smart Solutions - Control & Management
           </Typography>
           
           {auth ? (
             <>
               <Typography gutterBottom>
-              Welcome to your account management portal. Here, you can easily manage your subscription and billing information. With just a click, you'll be able to change your plan, update payment details, or even cancel your subscription. Everything you need to take control of your account is at your fingertips. Simply click the "Manage Billing" button below to get started.
-              <br /><br />
+                Welcome to your V10D Smart Solutions control portal. Here, you have access to a suite of tools designed to help you manage and optimize various aspects of your smart solutions. Easily configure your settings, monitor performance, and update your preferences. Use the menu to navigate through the different functionalities available to you.
+                <br /><br />
               </Typography>
               <Typography gutterBottom>
-              Use the menu to navigate the site.
-              <br />
+                Use the menu to navigate the site.
+                <br />
               </Typography>
-
-              
             </>
-              ) : (
-                <>
-                  <Typography>
-                    Introducing the revolutionary V10d Smart Assistant, your ultimate AI-powered productivity partner designed to transform your work life. Experience seamless integration with your favorite platforms like Google Workspaces, Microsoft D365, JIRA, LinkedIn, and Slack for a truly connected experience. Master your schedule, craft impeccable emails, and streamline meetings with our intelligent AI assistance. Choose between our Free, Light, and Advanced packages, and enjoy a risk-free 7-day trial to unlock the full potential of V10d. Don't miss out; sign up today and elevate your productivity to unprecedented heights with V10d Smart Assistant!
-                  </Typography>
-
-                  <Typography>
-                    <br />
-                    Sign up or login here: <a href={`https://oauth.v10d.com/login?response_type=code&client_id=7g4ns3biqfljptpjdlpqsht97k&redirect_uri=${redirectUri}`}>Login/SignUp</a>
-                  </Typography>
-                </>
-            )}
-            
+          ) : (
+            <>
+              <Typography>
+                Discover the power of V10D Smart Solutions, a comprehensive suite of AI-driven tools designed to enhance your productivity and streamline your workflows. Seamlessly integrate with platforms like Google Workspaces, Microsoft D365, JIRA, LinkedIn, and Slack. From managing your schedule to crafting perfect emails and optimizing meetings, V10D Smart Solutions offers a range of features to meet your needs. Choose from our Free, Light, and Advanced packages, and start with a risk-free 7-day trial to experience the full capabilities of our smart solutions.
+              </Typography>
+  
+              <Typography>
+                <br />
+                Sign up or login here: <a href={`https://oauth.v10d.com/login?response_type=code&client_id=7g4ns3biqfljptpjdlpqsht97k&redirect_uri=${redirectUri}`}>Login/SignUp</a>
+              </Typography>
+            </>
+          )}
+          
         </Box>
       </Container>
     </Box>
-    
   );
 
 

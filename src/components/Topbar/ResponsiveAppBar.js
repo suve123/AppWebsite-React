@@ -26,7 +26,7 @@ function ResponsiveAppBar({ handleLogout, snackOpen, setSnackOpen, snackText, se
   const auth = useContext(AuthContext);
 
 
-  const pages = ['Home', 'Products', 'Subscription','Assistant', 'Setup', 'Meetingminder', 'Help'];
+  const pages = ['Home', 'Products', 'Subscription','Assistant', 'Setup', 'Video', 'Meetingminder', 'Help'];
 
 
   const settings = [
@@ -100,7 +100,7 @@ function ResponsiveAppBar({ handleLogout, snackOpen, setSnackOpen, snackText, se
                 textDecoration: 'none',
               }}
             >
-               &nbsp;Smart Assistant&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;Control HUB&nbsp;&nbsp;&nbsp;&nbsp;
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
