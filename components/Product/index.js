@@ -11,8 +11,9 @@ import {Elements} from '@stripe/react-stripe-js';
 function stripeEmbed(sub) {
   console.log(sub)
 
-  const userEmail = localStorage.getItem('email');
-  
+ // const userEmail = localStorage.getItem('email');
+ var   userEmail;
+
   return {
     __html: `<stripe-pricing-table 
       pricing-table-id="${process.env.REACT_APP_stripe_pricingTableId}"
@@ -30,10 +31,11 @@ function Component() {
   var sub 
   var groups 
 
+  /*
   const storedJwtToken = localStorage.getItem('access_token');
   sub = localStorage.getItem('sub');
   groups = localStorage.getItem('groups');
-  
+  */
 
 
   const auth = useContext(AuthContext);
