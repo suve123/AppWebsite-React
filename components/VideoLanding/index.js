@@ -60,10 +60,42 @@ const VideoLanding = () => {
         <meta property="og:description" content="Video has been prepared - hope you will like it." />
         <meta property="og:image" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/e3e11c3426a54ef8b01a02133009cfed/061a14961595444bbddc71b02ac50506.jpeg?Expires=1720110167&Signature=fFA2~DArAcf7mthZY1Hqu3Z3Ltu582rEob0MaCNilhqYjc3pzJHN1PjjNfbjgHMOBknbf3i~LFeSh-T5zaFLmLPIZAJWlySbxnYPWi~HXhHNsXUgwjid7HBSkmSGhRcPs2fHm3YU1phz-ATJ7oDRw7O8EqxF3v50KcLlRFSxkiK97cNZPhgCl7KkagzO7X-XNNTRPLn9toEjSZpPBnlYND6rY1GBy2ZWkEzOCOf1eY2TfUGjT5E0BkOCJ0fLMxUDAVVpQK7rAXNbuscGjNpAJK4CgaNxzaZKzTpoY4fDQmgsT~2CzY7P~fPknfrI5ucS5BP4r4NbqEZauk0UzGwWKQ__&Key-Pair-Id=K38HBHX5LX3X2H" />
         <meta property="og:url" content="https://app.v10d.com/tc?id=12345" />
+
+        <meta property="og:type" content="video"/>
+
+      <meta property="og:video" content="https://app.v10d.com/tc?id=12345"/>
+      <meta property="og:site_name" content="Sunes video page"/>
+      <meta property="og:title" content="My tite goes here"/>
+
+
+
+
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Landing Page for twitter" />
         <meta name="twitter:description" content="Teitter Welcome to our landing page. Watch the video and let us know your biggest challenges." />
-        <meta name="twitter:image" content="https://app.v10d.com/tc?id=12345" />
+        <meta name="twitter:image" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/e3e11c3426a54ef8b01a02133009cfed/061a14961595444bbddc71b02ac50506.jpeg?Expires=1720110167&Signature=fFA2~DArAcf7mthZY1Hqu3Z3Ltu582rEob0MaCNilhqYjc3pzJHN1PjjNfbjgHMOBknbf3i~LFeSh-T5zaFLmLPIZAJWlySbxnYPWi~HXhHNsXUgwjid7HBSkmSGhRcPs2fHm3YU1phz-ATJ7oDRw7O8EqxF3v50KcLlRFSxkiK97cNZPhgCl7KkagzO7X-XNNTRPLn9toEjSZpPBnlYND6rY1GBy2ZWkEzOCOf1eY2TfUGjT5E0BkOCJ0fLMxUDAVVpQK7rAXNbuscGjNpAJK4CgaNxzaZKzTpoY4fDQmgsT~2CzY7P~fPknfrI5ucS5BP4r4NbqEZauk0UzGwWKQ__&Key-Pair-Id=K38HBHX5LX3X2H" />
+        <meta name="twitter:player" content="https://app.v10d.com/tc?id=12345"/>
+        <meta name="twitter:site" content="@typoconsult"/>
+      <meta name="twitter:creator" content="@typoconsult"/>
+      <meta name="twitter:player:width" content="700"/>
+      <meta name="twitter:player:height" content="400"/>
+
+
+
+
+
+        <meta charSet="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"/>
+      <meta name="robots" content="noindex, nofollow"/>
+
+
+      <meta name="keywords" content="AI spokesperson, talking avatar, corporate training, online learning, promotional video, explainer video, AI avatar video, voice clone"/>
+      <meta name="google" content="notranslate"/>
+
+
+
+
       </Head>
 
       <Container maxWidth="xl">

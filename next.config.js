@@ -9,5 +9,6 @@ const withTM = require('next-transpile-modules')([
 module.exports = withTM({
   reactStrictMode: true,
   // Any other Next.js configuration options
+  
 });
 
